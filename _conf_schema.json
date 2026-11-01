@@ -1,0 +1,86 @@
+{
+  "api_base": {
+    "description": "TTS API 地址",
+    "type": "string",
+    "default": "https://api-v2.yuafeng.cn/API/kktts.php",
+    "hint": "kktts 接口地址，一般无需修改"
+  },
+  "default_voice_id": {
+    "description": "默认音色 ID",
+    "type": "string",
+    "default": "cc073894e597a60a8a784ef4b4e9b473",
+    "hint": "未指定音色时使用的音色 ID，默认为「甜妹音」（已测试可用）。可通过 tts角色 指令查询可用音色"
+  },
+  "default_voice_name": {
+    "description": "默认音色名称",
+    "type": "string",
+    "default": "甜妹音",
+    "hint": "默认音色的显示名称，仅用于展示"
+  },
+  "auto_tts": {
+    "description": "启用 LLM 回复自动转语音",
+    "type": "bool",
+    "default": true,
+    "hint": "开启后，LLM 生成的回复会按概率自动转成语音发送；每个会话还可用 tts自动 指令单独控制"
+  },
+  "auto_probability": {
+    "description": "全局自动转语音概率（%）",
+    "type": "int",
+    "min": 0,
+    "max": 100,
+    "default": 10,
+    "hint": "每次 LLM 回复转语音的概率，0 为关闭。会话可用 tts自动 指令覆盖"
+  },
+  "auto_mode": {
+    "description": "自动转语音模式",
+    "type": "string",
+    "options": ["替换文本", "附加语音"],
+    "default": "替换文本",
+    "hint": "替换文本：发送前把该条回复换成语音（仅非流式平台，如 QQ；流式平台不转语音，请改用附加语音）；附加语音：文字照发，语音额外追加"
+  },
+  "min_text_length": {
+    "description": "自动转语音最小文本长度",
+    "type": "int",
+    "min": 0,
+    "max": 100,
+    "default": 2,
+    "hint": "LLM 回复文本短于该长度不转语音"
+  },
+  "max_text_length": {
+    "description": "自动转语音最大文本长度",
+    "type": "int",
+    "min": 10,
+    "max": 2000,
+    "default": 300,
+    "hint": "LLM 回复文本长于该长度不转语音（太长合成慢且费次数）"
+  },
+  "cooldown": {
+    "description": "同会话自动语音冷却（秒）",
+    "type": "int",
+    "min": 0,
+    "max": 3600,
+    "default": 30,
+    "hint": "同一会话两次自动转语音之间的最小间隔，防止刷屏"
+  },
+  "tts_timeout": {
+    "description": "合成请求超时（秒）",
+    "type": "int",
+    "min": 10,
+    "max": 300,
+    "default": 60
+  },
+  "cache_hours": {
+    "description": "音色列表缓存时长（小时）",
+    "type": "int",
+    "min": 1,
+    "max": 168,
+    "default": 24,
+    "hint": "音色列表缓存超过该时长后自动刷新，也可用 tts刷新 手动刷新"
+  },
+  "llm_system_prompt": {
+    "description": "tts生成 指令的 LLM 系统提示词",
+    "type": "text",
+    "default": "你是一个说话简短生动的助手。根据用户的要求生成一段适合朗读的口播文案，直接输出文案本身，不要任何解释、前言、markdown 格式或表情符号，长度控制在 100 字以内。",
+    "hint": "tts生成 指令调用 LLM 时使用的系统提示词"
+  }
+}
