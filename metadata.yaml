@@ -1,6 +1,6 @@
 name: ldmpl_kktts
 display_name: KK语音合成
 desc: 基于 kktts API 的语音合成插件。支持指令合成语音、LLM 生成文本后合成、按名称/ID 指定音色角色（会话级记忆）、LLM 回复按概率自动转语音发送（可替换文本或附加发送）、合成失败自动回退文字。
-version: v1.2.1
+version: v1.2.2
 author: 懒大猫
 repo: https://github.com/landamao/ldmpl_kktts

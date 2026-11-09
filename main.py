@@ -605,7 +605,7 @@ class KKttsPlugin(Star):
         调用成功后语音已发出，不要再把同样的文本用纯文字重复发一遍。
 
         Args:
-            text(string): 要朗读的文本，适合口语，控制在 200 字以内
+            text(string): 要朗读的文本，适合口语， 75 字以内
             voice(string): 可选。音色名称或音色 ID，留空则用当前会话已设置的音色。不确定名称时可先用 kktts_search_voice 查询
         """
         try:
